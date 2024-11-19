@@ -1,0 +1,12 @@
+{
+    "name": "rocket-reusability",
+    "version": "1.0.4",
+    "title": "Rocket Reusability",
+    "author": "redplasticstraw",
+    "factorio_version": "2.0",
+    "dependencies": [
+        "base >= 2.0",
+        "space-age"
+    ],
+    "description": "A small Space Age extension that adds Used rockets and reprocessing of their chunks."
+  }

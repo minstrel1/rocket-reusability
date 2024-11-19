@@ -1,0 +1,33 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+Date: 11. 19. 2024
+  Features:
+    - Added modding interface for space platform starter pack whitelists. Currently nonfunctional due to an engine bug when reading space platform starter packs.
+    - Added command "reset-whitelist" to reset what space platform types allow the used rocket to spawn on.
+    - Added debug mode setting.
+
+  Changes:
+    - Used rockets now spawn a lot farther forward to make sure it doesn't spawn directly on larger platforms.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+Date: 11. 18. 2024
+  Fixes:
+    - Hid some debug messages because they could fire a lot more often than I thought.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 11. 15. 2024
+  Fixes:
+    - Fixed crash when launching a rocket with an unconstructed space platform.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 11. 15. 2024
+  Features:
+    - Added startup setting to enable productivity for incomplete rocket parts.
+
+  Fixes:
+    - Fixed typos.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 11. 15. 2024
+  Features:
+    - Initial release.
