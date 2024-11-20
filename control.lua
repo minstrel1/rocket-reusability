@@ -47,6 +47,10 @@ script.on_event(
                     game.print("Couldn't find associated planet for rocket launch.")
                 end
                 return 
+            else
+                if debug_mode then
+                    game.print("Launched from planet ".. planet.prototype.name)
+                end
             end
             ---@type LuaForce
             local force = event.rocket_silo.force
@@ -61,7 +65,9 @@ script.on_event(
             local whitelist = storage.platform_type_whitelist[force.name]
 
             local platform_candidates = {}
+            local platform_count = 0
             local priority_candidates = {}
+            local priority_count = 0
             for index, platform in pairs(force.platforms) do
                 -- game.print(platform.name)
                 -- if platform.starter_pack then
@@ -72,22 +78,57 @@ script.on_event(
                 if true then
                     if platform.surface then
                         if platform.space_location then
-                            if platform.space_location.object_name == planet.prototype.object_name then
+                            if platform.space_location.name == planet.prototype.name then
+
                                 table.insert(platform_candidates, platform)
+                                platform_count = platform_count + 1
+                                
+                                local candidates = platform.surface.find_entities_filtered({name = "remnant-beacon"})
+                                if #candidates > 0 then
+                                    if debug_mode then
+                                        game.print("we got a priority candidate")
+                                    end
+                                    ---@type LuaEntity
+                                    local remnant_beacon = candidates[1]
+                                    if remnant_beacon and remnant_beacon.valid then
+                                        -- if debug_mode then
+                                        --     game.print(remnant_beacon.name)
+                                        --     game.print(remnant_beacon.status)
+                                        -- end
+                                        if remnant_beacon.status == defines.entity_status.working or remnant_beacon.status == defines.entity_status.low_power then
+                                            if debug_mode then
+                                                game.print("adding priority")
+                                            end
+                                            table.insert(priority_candidates, platform)
+                                            priority_count = priority_count + 1
+                                        end
+                                    end
+                                end
                             end
                         end
                     end
                 end
             end
 
-            if count == 0 then
+            if #platform_candidates == 0 then
                 if debug_mode then
                     game.print("Found no suitable platforms.")
                 end
                 return 
             end
 
-            local target = platform_candidates[math.random(1, #platform_candidates)]
+            local target
+            if priority_count > 0 then
+                if debug_mode then
+                    game.print("We got a priority candidate!")
+                end
+                target = priority_candidates[math.random(1, priority_count)]
+            else
+                if debug_mode then
+                    game.print("There is no priority.")
+                end
+                target = platform_candidates[math.random(1, platform_count)]
+            end
 
             if debug_mode then
                 game.print("Spawning asteroid on platform " .. target.name)
