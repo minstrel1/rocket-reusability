@@ -1,3 +1,5 @@
+require("prototypes/remnant-beacon")
+
 local space_age_sounds = require("__space-age__.prototypes.entity.sounds")
 local explosion_animations = require("__space-age__.prototypes.entity.explosion-animations")
 local space_age_item_sounds = require("__space-age__.prototypes.item_sounds")
@@ -363,3 +365,5 @@ local technology = {
 
 data:extend { recipe }
 data:extend { technology }
+
+
