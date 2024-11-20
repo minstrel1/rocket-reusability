@@ -5,6 +5,7 @@ item.place_result = "remnant-beacon"
 item.order = "g"
 item.icon = "__rocket-reusability__/graphics/icons/remnant-beacon.png"
 item.icon_size = 64
+item.weight = 1000
 
 data:extend{item}
 
@@ -21,7 +22,7 @@ entity.collision_box = {{-1.9, -1.9}, {1.9, 1.9}}
 entity.selection_box = {{-2.0, -2.0}, {2.0, 2.0}}
 
 entity.energy_usage = "500kW"
-entity.energy_per_sector = "100gW"
+entity.energy_per_sector = "100GW"
 entity.max_distance_of_nearby_sector_revealed = 1
 entity.max_distance_of_sector_revealed = 1
 entity.energy_per_nearby_scan = "250kW"
@@ -37,8 +38,8 @@ entity.pictures = {
             height = 407,
             apply_projection = false,
             direction_count = 1,
-            shift = util.by_pixel(1.0, -16.0),
-            scale = 0.5
+            shift = util.by_pixel(0.0, -30.0),
+            scale = 0.45
         },
         {
             filename = "__rocket-reusability__/graphics/entity/remnant-beacon/remnant-beacon-shadow.png",
@@ -47,7 +48,7 @@ entity.pictures = {
             height = 246,
             apply_projection = false,
             direction_count = 1,
-            shift = util.by_pixel(39.0, 6.0),
+            shift = util.by_pixel(24.0, 3.0),
             draw_as_shadow = true,
             scale = 0.5
         }
@@ -58,4 +59,22 @@ entity.water_reflection = nil
 
 entity.circuit_connector = nil
 
+entity.surface_conditions = {
+  {
+    property = "gravity",
+    min = 0,
+    max = 0
+  }
+},
+
 data:extend{entity}
+
+local recipe = {
+    type = "recipe",
+    name = "remnant-beacon",
+    enabled = true,
+    energy_required = 20,
+    ingredients = {{"processing-unit", 50}, {"low-density-structure", 25}, {"steel", 100},},
+    result = "remnant-beacon",
+    requester_paste_multiplier = 5
+}

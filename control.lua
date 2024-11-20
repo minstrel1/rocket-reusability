@@ -61,7 +61,7 @@ script.on_event(
             local whitelist = storage.platform_type_whitelist[force.name]
 
             local platform_candidates = {}
-            local count = 0
+            local priority_candidates = {}
             for index, platform in pairs(force.platforms) do
                 -- game.print(platform.name)
                 -- if platform.starter_pack then
@@ -74,7 +74,6 @@ script.on_event(
                         if platform.space_location then
                             if platform.space_location.object_name == planet.prototype.object_name then
                                 table.insert(platform_candidates, platform)
-                                count = count + 1
                             end
                         end
                     end
@@ -88,7 +87,7 @@ script.on_event(
                 return 
             end
 
-            local target = platform_candidates[math.random(1, count)]
+            local target = platform_candidates[math.random(1, #platform_candidates)]
 
             if debug_mode then
                 game.print("Spawning asteroid on platform " .. target.name)
