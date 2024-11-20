@@ -5,7 +5,7 @@ item.place_result = "remnant-beacon"
 item.order = "g"
 item.icon = "__rocket-reusability__/graphics/icons/remnant-beacon.png"
 item.icon_size = 64
-item.weight = 1000
+item.weight = 1000000
 
 data:extend{item}
 

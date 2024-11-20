@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.5
+Date: 11. 20. 2024
+  Features:
+    - Added Remnant Beacon, a way to prioritize used rockets spawning on specific platforms.
+
+  Fixes:
+    - Used rockets now actually spawn only on platforms in orbit of the planet they launch from. 
+---------------------------------------------------------------------------------------------------
 Version: 1.0.4
 Date: 11. 19. 2024
   Features:
