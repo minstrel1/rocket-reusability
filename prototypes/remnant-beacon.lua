@@ -5,6 +5,7 @@ item.place_result = "remnant-beacon"
 item.order = "g"
 item.icon = "__rocket-reusability__/graphics/icons/remnant-beacon.png"
 item.icon_size = 64
+item.stack_size = 1
 item.weight = 1000000
 
 data:extend{item}
@@ -72,9 +73,46 @@ data:extend{entity}
 local recipe = {
     type = "recipe",
     name = "remnant-beacon",
-    enabled = true,
+    enabled = false,
     energy_required = 20,
-    ingredients = {{"processing-unit", 50}, {"low-density-structure", 25}, {"steel", 100},},
-    result = "remnant-beacon",
+    ingredients = {
+        { type = "item", name = "processing-unit", amount = 50 },
+        { type = "item", name = "low-density-structure", amount = 25 },
+        { type = "item", name = "steel-plate", amount = 100 },
+    },
+    results = {{type="item", name="remnant-beacon", amount=1}},
     requester_paste_multiplier = 5
 }
+
+data:extend{recipe}
+
+local technology = {
+    type = "technology",
+    name = "remnant-beacon",
+    icon = "__rocket-reusability__/graphics/icons/remnant-beacon-technology.png",
+    icon_size = 256,
+    effects =
+    {
+        {
+            type = "unlock-recipe",
+            recipe = "remnant-beacon"
+        },
+    },
+    prerequisites = { "rocket-chunk-processing" },
+    unit =
+    {
+        count = 1000,
+        ingredients =
+        {
+            { "automation-science-pack", 1 },
+            { "logistic-science-pack",   1 },
+            { "chemical-science-pack",   1 },
+            { "production-science-pack", 1 },
+            { "utility-science-pack",    1 },
+            { "space-science-pack",      1 },
+        },
+        time = 60
+    }
+}
+
+data:extend{technology}
