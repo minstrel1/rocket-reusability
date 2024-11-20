@@ -31,27 +31,31 @@ entity.integration_patch = nil
 entity.pictures = {
     layers = {
         {
-            filename = "__base__/graphics/entity/radar/radar.png",
+            filename = "__rocket-reusability__/graphics/entity/remnant-beacon/remnant-beacon.png",
             priority = "low",
-            width = 196,
-            height = 254,
+            width = 294,
+            height = 407,
             apply_projection = false,
-            direction_count = 64,
-            line_length = 8,
+            direction_count = 1,
             shift = util.by_pixel(1.0, -16.0),
             scale = 0.5
         },
         {
-            filename = "__base__/graphics/entity/radar/radar-shadow.png",
+            filename = "__rocket-reusability__/graphics/entity/remnant-beacon/remnant-beacon-shadow.png",
             priority = "low",
-            width = 336,
-            height = 170,
+            width = 424,
+            height = 246,
             apply_projection = false,
-            direction_count = 64,
-            line_length = 8,
+            direction_count = 1,
             shift = util.by_pixel(39.0, 6.0),
             draw_as_shadow = true,
             scale = 0.5
         }
     }
 }
+
+entity.water_reflection = nil
+
+entity.circuit_connector = nil
+
+data:extend{entity}
